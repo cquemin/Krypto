@@ -1,4 +1,4 @@
-package com.island.yoshiz.mpp.krypto.aes.model
+package com.island.yoshiz.mpp.krypto.aes.model.file
 
 import com.island.yoshiz.mpp.krypto.aes.model.keys.AesKeyIv
 
