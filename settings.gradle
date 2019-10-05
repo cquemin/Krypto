@@ -1,0 +1,5 @@
+include ':common',':aes'//, ':rsa'
+
+rootProject.name = 'Krypto'
+
+enableFeaturePreview('GRADLE_METADATA')
