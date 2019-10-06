@@ -28,18 +28,18 @@ jobs: # a collection of steps
           key: v1-gradle-cache-{{ checksum "build.gradle" }}-{{ checksum "common/build.gradle"}}-{{ checksum "aes/build.gradle"}}-{{ checksum "rsa/build.gradle" }}
       - store_test_results:
           # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
-          path: build/test-results/test
+          path: build/test-results/testReleaseUnitTest
       - store_artifacts: # Upload test results for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: build/test-results/test
+          path: build/test-results/testReleaseUnitTest
           when: always
       - run:
-          name: Assemble JAR
+          name: Assemble JVM variants
           command: |
             # Skip this for other nodes
             if [ "$CIRCLE_NODE_INDEX" == 0 ]; then
               ./gradlew assemble
             fi
-      # As the JAR was only assembled in the first build container, build/libs will be empty in all the other build containers.
+      # As the binary was only assembled in the first build container, build/libs will be empty in all the other build containers.
       - store_artifacts:
           path: build/libs
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
