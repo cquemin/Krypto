@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:stretch
+
+    steps:
+      - checkout
+
+      - run:
+          name: Unit tests JVM
+          command: ./gradlew jvmTest
+
+      - run:
+          name: Build JVM
+          command: ./gradlew build
