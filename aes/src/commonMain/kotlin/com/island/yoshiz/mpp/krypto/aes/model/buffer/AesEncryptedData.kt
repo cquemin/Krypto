@@ -5,6 +5,10 @@ import com.island.yoshiz.mpp.krypto.aes.model.keys.IV
 
 data class AesEncryptedDataIv(val iv: IV, val encryptedData: ByteArray) {
 
+    /**
+     * Assumes that the first byte contains the size of the IV field and that the rest of the
+     * array is the encrypted data
+     */
     constructor(data: ByteArray) : this(
             IV(data.sliceArray(0 until data[0])),
             data.sliceArray(data[0] until data.size)
