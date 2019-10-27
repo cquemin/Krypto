@@ -14,10 +14,10 @@ actual class SecureRandomGenerator actual constructor() {
     actual fun generateBytes(lengthBytes: Int): ByteArray {
         try {
             val secureRandom = SecureRandom.getInstance("SHA1PRNG")
-            val key = ByteArray(lengthBytes)
-            secureRandom.nextBytes(key)
+            val buffer = ByteArray(lengthBytes)
+            secureRandom.nextBytes(buffer)
 
-            return key
+            return buffer
         } catch (exception: Throwable) {
             throw SecureRandomException(cause = exception)
         }
